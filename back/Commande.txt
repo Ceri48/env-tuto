@@ -1,0 +1,4 @@
+symfony new monApp
+cd monApp
+composer require api
+symfony server:start --no-tls

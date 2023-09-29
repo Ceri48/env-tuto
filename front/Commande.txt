@@ -1,0 +1,4 @@
+ng new monApp --skip-tests=true --style=scss --routing
+cd monApp
+ng add @ng-bootstrap/ng-bootstrap
+ng serve --host 0.0.0.0 --poll 2000

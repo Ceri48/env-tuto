@@ -1,0 +1,44 @@
+version: '3.7'
+services:
+  back:
+    build: back
+    command: tail -F anything
+#    command: 'bash -c "composer install && symfony server:stop && symfony server:start --no-tls"'
+#    working_dir: /var/www/html/monApp
+    ports:
+      - '8080:8000'
+      - '45019:45019'
+      - '9912:9912'
+    volumes:
+      - './back:/var/www/html'
+    networks:
+      - dev
+  db:
+    image: 'mariadb:11.1.2'
+    ports:
+      - '3306:3306'
+    environment:
+      MARIADB_ROOT_PASSWORD: password
+    volumes:
+      - './db/db_data:/var/lib/mysql'
+    networks:
+      - dev
+  front:
+    build: front
+    command: tail -F anything
+#    command: bash -c "npm i && ng serve --host 0.0.0.0 --poll 2000"
+#    working_dir: /home/node/app/monApp
+    ports:
+      - '4200:4200'
+      - '49153:49153'
+      - '9005:9005'
+    volumes:
+      - './front/:/home/node/app/'
+    networks:
+      - dev
+volumes:
+  back: null
+  front: null
+  db_data: null
+networks:
+  dev: null

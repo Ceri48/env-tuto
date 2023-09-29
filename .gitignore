@@ -1,0 +1,11 @@
+/back/*
+!/back/Dockerfile
+!/back/Commande.txt
+!/back/.env.local
+/front/*
+!/front/Dockerfile
+!/front/Commande.txt
+/db/db_data/
+/.idea/
+*/.idea/
+**/.idea/
